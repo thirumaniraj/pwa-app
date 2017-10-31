@@ -11,10 +11,10 @@
     <title>Freelancer - Start Bootstrap Theme</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 	<link rel="apple-touch-icon" sizes="57x57" href="img/icons/apple-icon-57x57.png">
@@ -553,6 +553,28 @@
 	
 	<!--Service worker registeration -->
 	<script type="text/javascript">
+	
+	Notification.requestPermission(function(status){
+console.log('Notification Permission Status:', status);
+});
+function displayNotification() {
+  if (Notification.permission === 'granted') {  
+    navigator.serviceWorker.getRegistration()
+    .then(function(reg){
+      reg.showNotification('Hello world!');
+    });
+  }
+}
+
+ var options = {
+   body: 'Here is a notification body!',
+   icon: 'img/profile.png',
+   vibrate: [100, 50, 100],
+   data: { primaryKey: 1 } // allows us to identify notification
+ };
+ reg.showNotification('Hello world!', options);
+	
+	
 //This is the "Offline copy of pages" service worker
 
 //Add this below content to your HTML page, or add the js file to your page at the very top to register sercie worker
@@ -568,14 +590,15 @@ if (navigator.serviceWorker.controller) {
 }
 
 
+
 	</script>
 	
     <!-- Bootstrap core JavaScript -->
-    <script src="jquery/jquery.min.js"></script>
-    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Contact Form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
