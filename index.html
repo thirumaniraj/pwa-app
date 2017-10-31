@@ -574,12 +574,14 @@ if (navigator.serviceWorker.controller) {
 console.log('Notification Permission Status:', status);
 });
 function displayNotification() {
- var options = {
-   body: 'Here is a notification body!',
-   icon: 'images/example.png',
-   vibrate: [100, 50, 100],
-   data: { primaryKey: 1 } // allows us to identify notification
- };
+var options = {
+  body: 'First notification!',
+  actions: [
+    {action: 'explore', title: 'Go to the site', icon: 'img/check.png'},
+    {action: 'close', title: 'No thank you', icon: 'img/x.png'},
+  ]
+};
+reg.showNotification('Hello world!', options);
 
   if (Notification.permission === 'granted') {  
     navigator.serviceWorker.getRegistration()
