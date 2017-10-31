@@ -569,27 +569,6 @@ if (navigator.serviceWorker.controller) {
   });
 }
 
-	
-	Notification.requestPermission(function(status){
-console.log('Notification Permission Status:', status);
-});
-function displayNotification() {
-var options = {
-  body: 'First notification!',
-  actions: [
-    {action: 'explore', title: 'Go to the site', icon: 'img/check.png'},
-    {action: 'close', title: 'No thank you', icon: 'img/x.png'},
-  ]
-};
-reg.showNotification('Hello world!', options);
-
-  if (Notification.permission === 'granted') {  
-    navigator.serviceWorker.getRegistration()
-    .then(function(reg){
-      reg.showNotification('Hello world!');
-    });
-  }
-}
 
 
 	

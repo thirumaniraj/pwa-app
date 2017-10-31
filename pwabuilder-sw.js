@@ -1,19 +1,22 @@
-self.addEventListener('beforeinstallprompt', function(e) {
-  // beforeinstallprompt Event fired
 
-  // e.userChoice will return a Promise.
-  e.userChoice.then(function(choiceResult) {
 
-    console.log(choiceResult.outcome);
+self.addEventListener('push', function(event) {
+  console.log('[Service Worker] Push Received.');
+  console.log(`[Service Worker] Push had this data: "${event.data.text()}"`);
 
-    if(choiceResult.outcome == 'dismissed') {
-      console.log('User cancelled home screen install');
-    }
-    else {
-      console.log('User added to home screen');
-    }
-  });
+  const title = 'My Test PWA App';
+  const options = {
+  body: 'First notification!',
+  icon: 'img/profile.png',
+  actions: [
+    {action: 'explore', title: 'Go to the site', icon: 'img/check.png'},
+    {action: 'close', title: 'No thank you', icon: 'img/x.png'},
+  ]
+};
+
+  event.waitUntil(self.registration.showNotification(title, options));
 });
+
 
 
 //This is the "Offline copy of pages" wervice worker
