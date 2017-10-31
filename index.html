@@ -570,7 +570,22 @@ if (navigator.serviceWorker.controller) {
 }
 
 
-
+Notification.requestPermission(function(result) {
+	const title = 'My Test PWA App';
+	var  options = {
+  body: 'First notification!',
+  icon: 'img/profile.png',
+  actions: [
+    {action: 'explore', title: 'Go to the site', icon: 'img/check.png'},
+    {action: 'close', title: 'No thank you', icon: 'img/x.png'},
+  ]
+};
+  if (result === 'granted') {
+    navigator.serviceWorker.ready.then(function(registration) {
+      registration.showNotification(title,options);
+    });
+  }
+});
 	
 
 	</script>

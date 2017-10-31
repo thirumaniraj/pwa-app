@@ -1,28 +1,3 @@
-function displayNotification() {
-  if (Notification.permission === 'granted') {  
-    navigator.serviceWorker.getRegistration()
-    .then(function(reg){
-      reg.showNotification('Hello world!');
-    });
-  }
-}
-
-self.addEventListener('push', function(event) {
-  console.log('[Service Worker] Push Received.');
-  console.log(`[Service Worker] Push had this data: "${event.data.text()}"`);
-
-  const title = 'My Test PWA App';
-  const options = {
-  body: 'First notification!',
-  icon: 'img/profile.png',
-  actions: [
-    {action: 'explore', title: 'Go to the site', icon: 'img/check.png'},
-    {action: 'close', title: 'No thank you', icon: 'img/x.png'},
-  ]
-};
-
-  event.waitUntil(self.registration.showNotification(title, options));
-});
 
 
 
