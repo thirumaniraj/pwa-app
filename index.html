@@ -11,7 +11,7 @@
     <title>Freelancer - Start Bootstrap Theme</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -553,27 +553,7 @@
 	
 	<!--Service worker registeration -->
 	<script type="text/javascript">
-	
-	Notification.requestPermission(function(status){
-console.log('Notification Permission Status:', status);
-});
-function displayNotification() {
-  if (Notification.permission === 'granted') {  
-    navigator.serviceWorker.getRegistration()
-    .then(function(reg){
-      reg.showNotification('Hello world!');
-    });
-  }
-}
 
- var options = {
-   body: 'Here is a notification body!',
-   icon: 'img/profile.png',
-   vibrate: [100, 50, 100],
-   data: { primaryKey: 1 } // allows us to identify notification
- };
- reg.showNotification('Hello world!', options);
-	
 	
 //This is the "Offline copy of pages" service worker
 
@@ -589,7 +569,27 @@ if (navigator.serviceWorker.controller) {
   });
 }
 
+	
+	Notification.requestPermission(function(status){
+console.log('Notification Permission Status:', status);
+});
+function displayNotification() {
+  if (Notification.permission === 'granted') {  
+    navigator.serviceWorker.getRegistration()
+    .then(function(reg){
+      reg.showNotification('Hello world!');
+    });
+  }
+}
 
+ var options = {
+   body: 'Here is a notification body!',
+   icon: 'images/example.png',
+   vibrate: [100, 50, 100],
+   data: { primaryKey: 1 } // allows us to identify notification
+ };
+ reg.showNotification('Hello world!', options);
+	
 
 	</script>
 	
