@@ -54,7 +54,10 @@ self.addEventListener('notificationclick', function(event) {
   var notification = event.notification;
   var action = event.action;
   if (action === 'close') {
+	  	var primaryKey = notification.data.primaryKey;
+  console.log('Closed notification: ' + primaryKey);
     notification.close();
+
   } else {
     clients.openWindow('http://www.example.com');
   }

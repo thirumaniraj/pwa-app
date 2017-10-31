@@ -575,6 +575,8 @@ Notification.requestPermission(function(result) {
 	var  options = {
   body: 'First notification!',
   icon: 'img/profile.png',
+  vibrate: [100, 50, 100],
+  data: { primaryKey: 1 },
   actions: [
     {action: 'explore', title: 'Go to the site', icon: 'img/check.png'},
     {action: 'close', title: 'No thank you', icon: 'img/x.png'},
