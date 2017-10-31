@@ -1,4 +1,11 @@
-
+function displayNotification() {
+  if (Notification.permission === 'granted') {  
+    navigator.serviceWorker.getRegistration()
+    .then(function(reg){
+      reg.showNotification('Hello world!');
+    });
+  }
+}
 
 self.addEventListener('push', function(event) {
   console.log('[Service Worker] Push Received.');
